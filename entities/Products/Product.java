@@ -1,4 +1,4 @@
-package entities;
+package entities.Products;
 
 public abstract class Product {
 
@@ -9,6 +9,8 @@ public abstract class Product {
     }
 
     public abstract String getName();
+
+    public abstract String getTypeProduct();
     
     public Integer getPrice(){
         return price;
