@@ -14,11 +14,12 @@ public class MachineController {
     private ProductService service;
     private ArrayList<VendingMachine> listMachine = new ArrayList<>();
 
+    // конструктор, добавили один автомат - овощной
     public MachineController(ProductService service) {
         this.service = service;
         listMachine.add(new VegetableVendingMachine(1, "овощи"));
     }
-
+    // получить массив автоматов
     public MachineView[] getMachines() {
         ArrayList<MachineView> listView = new ArrayList<>();
         for (VendingMachine vendingMachine : listMachine) {
@@ -31,7 +32,7 @@ public class MachineController {
         MachineView[] dsf = new MachineView[listView.size()];
         return listView.toArray(dsf);
     }
-
+    // получить массив продуктов данного автомата
     public ProductMachineView[] getProductMachine(Integer id) {
         var machine = getMachineById(id);
         var typeProduct = machine.getTypeProduct();
@@ -55,7 +56,7 @@ public class MachineController {
 
         return view;
     }
-
+    // получить автомат по id
     private VendingMachine getMachineById(Integer id) {
         for (VendingMachine el : listMachine) {
             if (el.getId() == id) {
@@ -75,7 +76,7 @@ public class MachineController {
         String paymentCode = machine.reserveProduct(product);
         return paymentCode;
     }
-
+    // получить зарезервированный товар в интересующем автомате по коду
     public ProductMachineView getReservedProduct(Integer idMachine, String paymentCode) {
         var machine = getMachineById(idMachine);
         Product product = machine.getReservedProduct(paymentCode);

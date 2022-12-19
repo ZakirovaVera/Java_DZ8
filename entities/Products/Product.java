@@ -11,7 +11,7 @@ public abstract class Product {
     public abstract String getName();
 
     public abstract String getTypeProduct();
-    
+    // получить цену
     public Integer getPrice(){
         return price;
     }
